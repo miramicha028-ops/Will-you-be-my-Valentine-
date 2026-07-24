@@ -1,6 +1,70 @@
 (async function checkForUpdates() {
     const currentVersion = "1.0";
-    const versionUrl = "https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json"; 
+    const messages = [
+    "Are you sure?",
+    "Really sure??",
+    "Are you positive?",
+    "Pookie please...",
+    "Just think about it!",
+    "If you say no, I will be really sad...",
+    "I will be very sad...",
+    "I will be very very very sad...",
+    "Ok fine, I will stop asking...",
+    "Just kidding, say yes please! ❤️"
+];
+
+// يمكنك تغيير الرسائل أعلاه بالعبارات الجزائرية التي تفضلينها:
+/*
+const messages = [
+    "أيا بركاي ما تتكسريش علينا 😉",
+    "تخممي صح؟ زيدي خممي مليح!",
+    "راهي بصحك دروك تندمي 😜",
+    "بلا تمنكير اضغطي نعم!",
+    const messages = [
+    "أيا بركاي ما تتكسريش علينا 😉",
+    "تخممي صح؟ زيدي خممي مليح!",
+    "راهي بصحك دروك تندمي 😜",
+    "بلا تمنكير اضغطي إيه!",
+    "يا ودي قلتي لا ولا مزال؟ 😅",
+    "آخر فرصة! واش تحبي فيا أهلي؟ 😂",
+    "يا خاه منك، علابالي بلي تحبيني ❤️"
+];
+
+let messageIndex = 0;
+
+function handleNoClick() {
+    const noButton = document.querySelector('.no-button');
+    const yesButton = document.querySelector('.yes-button');
+    noButton.textContent = messages[messageIndex];
+    messageIndex = (messageIndex + 1) % messages.length;
+    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = `${currentSize * 1.5}px`;
+}
+
+function handleYesClick() {
+    window.location.href = "yes_page.html";
+}
+"يا ودي قلتي لا ولا مزال؟ 😅",
+    "آخر فرصة! راهي تروح عليك!",
+    "يا خاه منك، علابالي بلي تحبيني ❤️"
+];
+*/
+
+let messageIndex = 0;
+
+function handleNoClick() {
+    const noButton = document.querySelector('.no-button');
+    const yesButton = document.querySelector('.yes-button');
+    noButton.textContent = messages[messageIndex];
+    messageIndex = (messageIndex + 1) % messages.length;
+    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = `${currentSize * 1.5}px`;
+}
+
+function handleYesClick() {
+    window.location.href = "yes_page.html";
+}
+const versionUrl = "https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json"; 
 
     try {
         const response = await fetch(versionUrl);
